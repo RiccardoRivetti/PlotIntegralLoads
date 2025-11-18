@@ -1,0 +1,16 @@
+function printOutput(time,alpha,CD,CL)
+
+fprintf('========================================\n');
+
+fprintf('DATA EXTRACTED SUCCESFULLY\n\n')
+
+fprintf('SIMULATION TIMESTEPS\n')
+fprintf('From: %.5f\n',time(1));
+fprintf('To: %.5f\n\n',time(end));
+
+
+fprintf('Alpha:\n\n')
+disp(alpha);
+
+
+fprintf('========================================\n');
