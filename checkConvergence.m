@@ -3,6 +3,7 @@ clear
 close all
 
 addpath DataExtraction/
+addpath Postprocessing/
 
 %% VALUES
 
