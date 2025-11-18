@@ -1,5 +1,5 @@
 # PlotIntegralLoads
-MATLAB scripts to integral loads computed via DUST
+MATLAB scripts to plot integral loads computed via DUST
 
 This repository is comprised of two scripts:
   - main.m --> Used to plot CD-alpha, CL-alpha, efficiency and polar diagram of both the wing and the whole plane
