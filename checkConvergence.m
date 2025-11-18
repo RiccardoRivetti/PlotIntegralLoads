@@ -18,7 +18,7 @@ c_wing = 0.2471;
 qS     = 0.5*rho*U^2*S_wing;
 
 % Data extraction values
-alpha = 0:3;
+alpha = 0;
 
 nSim  = getSimNumber(wd);
 index = 1:nSim; % Row number(s) to sample from data
