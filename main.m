@@ -12,7 +12,7 @@ addpath Postprocessing/
 wd = '/Users/riccardorivetti/Desktop/PoliMi/FlyMi/PreliminaryPolar2';
 
 % Reference values
-rho = 1.225; % Density
+rho = 1.225; % Air density
 U   = 28.5;  % Freestream velocity
 
 S_wing = 0.408;  % Wing surface
@@ -27,7 +27,7 @@ time  = getTime(wd,index);
 nAlpha = length(alpha);
 nIdx   = length(index);
 
-% Plot controls
+% Plot controls --> Set to 1 the plots that you visualize
 plotControls = struct( ...
     'CD_wing',  0,...
     'CL_wing',  0,...
@@ -51,6 +51,7 @@ Fz.wing = getSimData(wd, 'wing', 'Fz', alpha, index);
 CD.wing = zeros(nAlpha,nIdx+1);
 CL.wing = zeros(nAlpha,nIdx+1);
 
+% Compute CD and CL
 for i = 1:(nIdx+1)
     for j = 1:nAlpha
         CD.wing(j, i) = (Fx.wing(j, i)*cos(alpha_rad(j)) + Fz.wing(j, i)*sin(alpha_rad(j)))/qS;
@@ -58,6 +59,7 @@ for i = 1:(nIdx+1)
     end
 end
 
+% Compute efficiency
 eff.wing = CL.wing ./ CD.wing;
 
 % Plane data
@@ -67,6 +69,7 @@ Fz.plane = getSimData(wd, 'plane', 'Fz', alpha, index);
 CD.plane = zeros(nAlpha,nIdx+1);
 CL.plane = zeros(nAlpha,nIdx+1);
 
+% Compute CD and CL
 for i = 1:(nIdx+1)
     for j = 1:nAlpha
         CD.plane(j, i) = (Fx.plane(j, i)*cos(alpha_rad(j)) + Fz.plane(j, i)*sin(alpha_rad(j)))/qS;
@@ -74,6 +77,7 @@ for i = 1:(nIdx+1)
     end
 end
 
+% Compute efficiency
 eff.plane = CL.plane ./ CD.plane;
 
 CL.wing_average  = CL.wing(:,end)';
