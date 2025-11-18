@@ -7,19 +7,20 @@ addpath Postprocessing/
 
 %% VALUES
 
-% Working directory
+% Working directory (Don't link the Postprocessing directory, it's already
+%   linked in getSimData())
 wd = '/Users/riccardorivetti/Desktop/PoliMi/FlyMi/PreliminaryPolar2';
 
 % Reference values
-rho = 1.225;
-U   = 28.5;
+rho = 1.225; % Density
+U   = 28.5;  % Freestream velocity
 
-S_wing = 0.408;
-c_wing = 0.2471;
+S_wing = 0.408;  % Wing surface
+c_wing = 0.2471; % Mean aerodynamic chord
 qS     = 0.5*rho*U^2*S_wing;
 
 % Data extraction values
-alpha = -5:12;
+alpha = -5:12; % Value(s) of aoa to consider
 index = 30:44; % Row number(s) to sample from data
 time  = getTime(wd,index);
 
