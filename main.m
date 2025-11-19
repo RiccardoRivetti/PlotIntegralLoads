@@ -9,7 +9,7 @@ addpath Postprocessing/
 
 % Working directory (Don't link the Postprocessing directory, it's already
 %   linked in getSimData())
-wd = '/Users/riccardorivetti/Desktop/PoliMi/FlyMi/PreliminaryPolar2';
+wd = '~/Desktop/PoliMi/FlyMi/PreliminaryPolar2';
 
 % Reference values
 rho = 1.225; % Air density
