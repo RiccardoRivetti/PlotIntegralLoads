@@ -1,51 +1,45 @@
-function getPlots(plotControls)
+function getPlots(plotControls,index,time,alpha,CD,CL,eff,component)
 
-if plotControls.CL_wing
-    plotC_alpha(alpha,CL.wing,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('$C_{L}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
+if component == "wing"
+    ctrl = struct(...
+        'CD',plotControls.CD_wing, ...
+        'CL',plotControls.CL_wing, ...
+        'eff',plotControls.efficiency_wing, ...
+        'polar',plotControls.polar_wing);
+elseif component == "plane"
+    ctrl = struct(...
+        'CD',plotControls.CD_plane, ...
+        'CL',plotControls.CL_plane, ...
+        'eff',plotControls.efficiency_plane, ...
+        'polar',plotControls.polar_plane);
 end
 
-if plotControls.CD_wing
-    plotC_alpha(alpha,CD.wing,index,time);
+if ctrl.CD
+    plotC_alpha(alpha,CD,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
     title('$C_{D}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
 end
 
-if plotControls.CL_plane
-    plotC_alpha(alpha,CL.plane,index,time);
+if ctrl.CL
+    plotC_alpha(alpha,CL,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('$C_{L}$-$\alpha$ diagram of the plane',Interpreter='latex',FontSize=20)
+    title('$C_{L}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
 end
 
-if plotControls.CD_plane
-    plotC_alpha(alpha,CD.plane,index,time);
+if ctrl.eff
+    plotC_alpha(alpha,eff,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    title('$C_{D}$-$\alpha$ diagram of the plane',Interpreter='latex',FontSize=20)
+    ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
+    title('Efficiency diagram of the wing',Interpreter='latex',FontSize=20)
 end
 
-if plotControls.polar_wing
-    plotPolar(CL.wing,CD.wing,index,time)
+if ctrl.polar
+    plotPolar(CL,CD,index,time)
     xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
     title('Polar diagram of the wing',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.polar_plane
-    plotPolar(CL.plane,CD.plane,index,time)
-    xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('Polar diagram of the plane',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.con
-    plotConvergence(index,CL.wing,alpha,time)
-    xlabel('$t$ [s]',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L,w}$',Interpreter='latex',FontSize=16)
 end
 
 end

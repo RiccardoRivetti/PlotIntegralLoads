@@ -29,13 +29,13 @@ nIdx   = length(index);
 
 % Plot controls --> Set to 1 the plots that you visualize
 plotControls = struct( ...
-    'CD_wing',  0,...
-    'CL_wing',  0,...
+    'CD_wing',  1,...
+    'CL_wing',  1,...
     'CD_plane', 0,...
     'CL_plane', 0,...
-    'polar_wing',  0,...
+    'polar_wing',  1,...
     'polar_plane', 0,...
-    'efficiency_wing',  0,...
+    'efficiency_wing',  1,...
     'efficiency_plane', 0);
 
 %% DATA
@@ -93,60 +93,7 @@ eff.plane_average = eff.plane(:,end)';
 printOutput(index,time,alpha,CD,CL);
 
 % WING
-if plotControls.CD_wing
-    plotC_alpha(alpha,CD.wing,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    title('$C_{D}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.CL_wing
-    plotC_alpha(alpha,CL.wing,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('$C_{L}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.efficiency_wing
-    plotC_alpha(alpha,eff.wing,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
-    title('Efficiency diagram of the wing',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.polar_wing
-    plotPolar(CL.wing,CD.wing,index,time)
-    xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('Polar diagram of the wing',Interpreter='latex',FontSize=20)
-end
+getPlots(plotControls,index,time,alpha,CD.wing,CL.wing,eff.wing,'wing')
 
 % PLANE
-if plotControls.CD_plane
-    plotC_alpha(alpha,CD.plane,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    title('$C_{D}$-$\alpha$ diagram of the plane',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.CL_plane
-    plotC_alpha(alpha,CL.plane,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('$C_{L}$-$\alpha$ diagram of the plane',Interpreter='latex',FontSize=20)
-end
-
-
-if plotControls.efficiency_plane
-    plotC_alpha(alpha,eff.plane,index,time);
-    xlabel('$\alpha$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
-    title('Efficiency diagram of the plane',Interpreter='latex',FontSize=20)
-end
-
-if plotControls.polar_plane
-    plotPolar(CL.plane,CD.plane,index,time)
-    xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('Polar diagram of the plane',Interpreter='latex',FontSize=20)
-end
+getPlots(plotControls,index,time,alpha,CD.plane,CL.plane,eff.plane,'plane')
