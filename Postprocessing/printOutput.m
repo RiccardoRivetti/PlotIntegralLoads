@@ -1,6 +1,6 @@
 function printOutput(index,time,alpha,CD,CL)
 
-fprintf('========================================================================================================================================================================================================\n');
+fprintf('===========================================================================\n\n');
 
 fprintf('<strong>>>> SIMULATION DATA EXTRACTED SUCCESFULLY >>></strong>\n\n')
 
@@ -15,18 +15,16 @@ fprintf('\n')
 
 fprintf('<strong>Average CD</strong>:\n\n')
 fprintf('Wing:  ')
-disp(CD.wing_average);
+disp(CD.wing(:,end)');
 fprintf('Plane: ')
-disp(CD.plane_average);
+disp(CD.plane(:,end)');
 fprintf('\n')
 
 fprintf('<strong>Average CL</strong>:\n\n')
 fprintf('Wing:  ')
-disp(CL.wing_average);
+disp(CL.wing(:,end)');
 fprintf('Plane: ')
-disp(CL.plane_average);
+disp(CL.plane(:,end)');
 
-fprintf('<strong><<< END <<<</strong>\n')
-fprintf('========================================================================================================================================================================================================\n\n');
 
 end

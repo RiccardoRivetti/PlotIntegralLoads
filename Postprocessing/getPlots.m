@@ -19,6 +19,7 @@ if ctrl.CD
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
     title(['$C_{D}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
+    fprintf('Plotted CD-alpha diagram of the %s\n',component);
 end
 
 if ctrl.CL
@@ -26,6 +27,7 @@ if ctrl.CL
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
     title(['$C_{L}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
+    fprintf('Plotted CL-alpha diagram of the %s\n',component);
 end
 
 if ctrl.eff
@@ -33,6 +35,7 @@ if ctrl.eff
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
     title(['Efficiency diagram of the ',component],Interpreter='latex',FontSize=20)
+    fprintf('Plotted efficiency diagram of the %s\n',component);
 end
 
 if ctrl.polar
@@ -40,6 +43,7 @@ if ctrl.polar
     xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
     title(['Polar diagram of the ',component],Interpreter='latex',FontSize=20)
+    fprintf('Plotted polar diagram of the %s\n',component);
 end
 
 end

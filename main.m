@@ -28,12 +28,12 @@ time  = getTime(wd,index);
 plotControls = struct( ...
     'CD_wing',  1,...
     'CL_wing',  1,...
-    'CD_plane', 1,...
-    'CL_plane', 1,...
-    'polar_wing',  1,...
+    'CD_plane', 0,...
+    'CL_plane', 0,...
+    'polar_wing',  0,...
     'polar_plane', 1,...
-    'efficiency_wing',  1,...
-    'efficiency_plane', 1);
+    'efficiency_wing',  0,...
+    'efficiency_plane', 0);
 
 %% DATA
 
@@ -45,9 +45,9 @@ Fz.wing = getSimData(wd, 'wing', 'Fz', alpha, index);
 
 [CD.wing,CL.wing,eff.wing] = getAeroCoefficients(Fx.wing,Fz.wing,qS,alpha,index);
 
-CL.wing_average  = CL.wing(:,end)';
-CD.wing_average  = CD.wing(:,end)';
-eff.wing_average = eff.wing(:,end)';
+CD.wing  = appendAverage(CD.wing,alpha);
+CL.wing  = appendAverage(CL.wing,alpha);
+eff.wing = appendAverage(eff.wing,alpha);
 
 % Plane data
 Fx.plane = getSimData(wd, 'plane', 'Fx', alpha, index);
@@ -55,9 +55,9 @@ Fz.plane = getSimData(wd, 'plane', 'Fz', alpha, index);
 
 [CD.plane,CL.plane,eff.plane] = getAeroCoefficients(Fx.plane,Fz.plane,qS,alpha,index);
 
-CL.plane_average  = CL.plane(:,end)';
-CD.plane_average  = CD.plane(:,end)';
-eff.plane_average = eff.plane(:,end)';
+CD.plane  = appendAverage(CD.plane,alpha);
+CL.plane  = appendAverage(CL.plane,alpha);
+eff.plane = appendAverage(eff.plane,alpha);
 
 %% POSTPROCESSING
 
@@ -68,3 +68,6 @@ getPlots(plotControls,index,time,alpha,CD.wing,CL.wing,eff.wing,'wing')
 
 % PLANE
 getPlots(plotControls,index,time,alpha,CD.plane,CL.plane,eff.plane,'plane')
+
+fprintf('\n<strong><<< END <<<</strong>\n')
+fprintf('===========================================================================\n\n');

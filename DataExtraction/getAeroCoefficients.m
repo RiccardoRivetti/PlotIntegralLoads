@@ -1,7 +1,7 @@
 function [CD,CL,eff] = getAeroCoefficients(Fx,Fz,qS,alpha,index)
 
 nAlpha = length(alpha);
-nIdx   = length(index)+1;
+nIdx   = length(index);
 
 alpha = deg2rad(alpha);
 
