@@ -14,14 +14,14 @@ disp(alpha);
 fprintf('\n')
 
 fprintf('<strong>Average CD</strong>:\n\n')
-fprintf('Wing: ')
+fprintf('Wing:  ')
 disp(CD.wing_average);
 fprintf('Plane: ')
 disp(CD.plane_average);
 fprintf('\n')
 
 fprintf('<strong>Average CL</strong>:\n\n')
-fprintf('Wing: ')
+fprintf('Wing:  ')
 disp(CL.wing_average);
 fprintf('Plane: ')
 disp(CL.plane_average);

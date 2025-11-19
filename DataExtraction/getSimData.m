@@ -1,7 +1,8 @@
 function [out] = getSimData(wd, component, force, alpha, index)
 % This function writes into a matrix the data where the rows correspond to
-% the angle of attack and the columns represent the timestep sampled. The
-% last column refers to the "no propeller" configuration.
+% the angle of attack and the columns represent the timestep sampled.
+%
+% The last column is an average of the previous.
 
 out = zeros(length(alpha),length(index)+1);
 
