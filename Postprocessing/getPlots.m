@@ -18,28 +18,28 @@ if ctrl.CD
     plotC_alpha(alpha,CD,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
-    title('$C_{D}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
+    title(['$C_{D}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
 end
 
 if ctrl.CL
     plotC_alpha(alpha,CL,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('$C_{L}$-$\alpha$ diagram of the wing',Interpreter='latex',FontSize=20)
+    title(['$C_{L}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
 end
 
 if ctrl.eff
     plotC_alpha(alpha,eff,index,time);
     xlabel('$\alpha$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
-    title('Efficiency diagram of the wing',Interpreter='latex',FontSize=20)
+    title(['Efficiency diagram of the ',component],Interpreter='latex',FontSize=20)
 end
 
 if ctrl.polar
     plotPolar(CL,CD,index,time)
     xlabel('$C_{D}$',Interpreter='latex',FontSize=16)
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
-    title('Polar diagram of the wing',Interpreter='latex',FontSize=20)
+    title(['Polar diagram of the ',component],Interpreter='latex',FontSize=20)
 end
 
 end
