@@ -24,9 +24,6 @@ alpha = -5:12; % Value(s) of aoa to consider
 index = 30:44; % Row number(s) to sample from data
 time  = getTime(wd,index);
 
-nAlpha = length(alpha);
-nIdx   = length(index);
-
 % Plot controls --> Set to 1 the plots that you visualize
 plotControls = struct( ...
     'CD_wing',  1,...
@@ -41,8 +38,6 @@ plotControls = struct( ...
 %% DATA
 
 % NOTICE: THE LAST COLUMN REFERS TO AN AVERAGE OF THE PREVIOUS COLUMNS
-
-alpha_rad = deg2rad(alpha);
 
 % Wing data
 Fx.wing = getSimData(wd, 'wing', 'Fx', alpha, index);

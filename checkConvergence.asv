@@ -3,6 +3,7 @@ clear
 close all
 
 addpath DataExtraction/
+addpath Postprocessing/
 
 %% VALUES
 
@@ -18,7 +19,7 @@ c_wing = 0.2471;
 qS     = 0.5*rho*U^2*S_wing;
 
 % Data extraction values
-alpha = 0:3;
+alpha = 0;
 
 nSim  = getSimNumber(wd);
 index = 1:nSim; % Row number(s) to sample from data
@@ -66,13 +67,33 @@ for i = 1:nIdx
     end
 end
 
+% Wing data
+Fx.wing = getSimData(wd, 'wing', 'Fx', alpha, index);
+Fz.wing = getSimData(wd, 'wing', 'Fz', alpha, index);
+
+[CD.wing,CL.wing,eff.wing] = getAeroCoefficients(Fx.wing,Fz.wing,qS,alpha,index);
+
+CL.wing(:,end) = [];
+CD.wing(:,end) = [];
+eff.wing(:,end) = [];
+
+% Plane data
+Fx.plane = getSimData(wd, 'plane', 'Fx', alpha, index);
+Fz.plane = getSimData(wd, 'plane', 'Fz', alpha, index);
+
+[CD.plane,CL.plane,eff.plane] = getAeroCoefficients(Fx.plane,Fz.plane,qS,alpha,index);
+
+CL.plane_average  = CL.plane(:,end)';
+CD.plane_average  = CD.plane(:,end)';
+eff.plane_average = eff.plane(:,end)';
+
 %% PLOTS
-% In the 'mode' option select to plot 
+% In the 'mode' option select to plot either timesteps or simulation time
 
 if plotControls.wing
-    plotConvergence(time,CD.wing,CL.wing,alpha,'wing')
+    plotConvergence(time,CD.wing,CL.wing,alpha,'wing','timestep')
 end
 
 if plotControls.plane
-    plotConvergence(time,CD.plane,CL.plane,alpha,'plane')
+    plotConvergence(time,CD.plane,CL.plane,alpha,'plane','timestep')
 end
