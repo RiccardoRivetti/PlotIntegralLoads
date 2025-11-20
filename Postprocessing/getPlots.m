@@ -1,4 +1,4 @@
-function getPlots(plotControls,index,time,alpha,CD,CL,eff,component)
+function getPlots(plotControls,index,time,alpha,CD,CL,eff,component,wd,saveFile)
 
 if component == "wing"
     ctrl = struct(...
@@ -20,6 +20,9 @@ if ctrl.CD
     ylabel('$C_{D}$',Interpreter='latex',FontSize=16)
     title(['$C_{D}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
     fprintf('Plotted CD-alpha diagram of the %s\n',component);
+    if saveFile
+        saveas(gcf, sprintf('%s/Graphs/%s_CD_alpha.png', wd, component));
+    end
 end
 
 if ctrl.CL
@@ -28,6 +31,9 @@ if ctrl.CL
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
     title(['$C_{L}$-$\alpha$ diagram of the ',component],Interpreter='latex',FontSize=20)
     fprintf('Plotted CL-alpha diagram of the %s\n',component);
+    if saveFile
+        saveas(gcf, sprintf('%s/Graphs/%s_CL_alpha.png', wd, component));
+    end
 end
 
 if ctrl.eff
@@ -36,6 +42,9 @@ if ctrl.eff
     ylabel('$C_{L}/C_{D}$',Interpreter='latex',FontSize=16)
     title(['Efficiency diagram of the ',component],Interpreter='latex',FontSize=20)
     fprintf('Plotted efficiency diagram of the %s\n',component);
+    if saveFile
+        saveas(gcf, sprintf('%s/Graphs/%s_eff_alpha.png', wd, component));
+    end
 end
 
 if ctrl.polar
@@ -44,6 +53,9 @@ if ctrl.polar
     ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
     title(['Polar diagram of the ',component],Interpreter='latex',FontSize=20)
     fprintf('Plotted polar diagram of the %s\n',component);
+    if saveFile
+        saveas(gcf, sprintf('%s/Graphs/%s_polar.png', wd, component));
+    end
 end
 
 end
