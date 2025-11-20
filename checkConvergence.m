@@ -19,7 +19,7 @@ c_wing = 0.2471;
 qS     = 0.5*rho*U^2*S_wing;
 
 % Data extraction values
-alpha = 0;
+alpha = 0:1;
 
 nSim  = getSimNumber(wd);
 index = 1:nSim; % Row number(s) to sample from data
@@ -40,19 +40,11 @@ Fz.wing = getSimData(wd, 'wing', 'Fz', alpha, index);
 
 [CD.wing,CL.wing,eff.wing] = getAeroCoefficients(Fx.wing,Fz.wing,qS,alpha,index);
 
-CL.wing(:,end) = [];
-CD.wing(:,end) = [];
-eff.wing(:,end) = [];
-
 % Plane data
 Fx.plane = getSimData(wd, 'plane', 'Fx', alpha, index);
 Fz.plane = getSimData(wd, 'plane', 'Fz', alpha, index);
 
 [CD.plane,CL.plane,eff.plane] = getAeroCoefficients(Fx.plane,Fz.plane,qS,alpha,index);
-
-CL.plane(:,end) = [];
-CD.plane(:,end) = [];
-eff.plane(:,end) = [];
 
 %% PLOTS
 % In the 'mode' option select to plot either timesteps or simulation time

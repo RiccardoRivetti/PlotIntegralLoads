@@ -22,6 +22,7 @@ if ctrl.CD
     fprintf('Plotted CD-alpha diagram of the %s\n',component);
     if saveFile
         saveas(gcf, sprintf('%s/Graphs/%s_CD_alpha.png', wd, component));
+        fprintf('Saved CD-alpha diagram of the %s\n',component);
     end
 end
 
@@ -33,6 +34,7 @@ if ctrl.CL
     fprintf('Plotted CL-alpha diagram of the %s\n',component);
     if saveFile
         saveas(gcf, sprintf('%s/Graphs/%s_CL_alpha.png', wd, component));
+        fprintf('Saved CL-alpha diagram of the %s\n',component);
     end
 end
 
@@ -44,6 +46,7 @@ if ctrl.eff
     fprintf('Plotted efficiency diagram of the %s\n',component);
     if saveFile
         saveas(gcf, sprintf('%s/Graphs/%s_eff_alpha.png', wd, component));
+        fprintf('Saved efficiency diagram of the %s\n',component);
     end
 end
 
@@ -55,6 +58,7 @@ if ctrl.polar
     fprintf('Plotted polar diagram of the %s\n',component);
     if saveFile
         saveas(gcf, sprintf('%s/Graphs/%s_polar.png', wd, component));
+        fprintf('Saved polar diagram of the %s\n',component);
     end
 end
 
