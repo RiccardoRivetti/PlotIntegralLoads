@@ -30,6 +30,9 @@ plotControls = struct( ...
     'wing',  1,...
     'plane', 1);
 
+saveFile = 0; % Set to 1 if you want to automatically save the plotted
+              % figures in ./Graphs in your working directory
+
 %% DATA
 
 % NOTICE: THE LAST COLUMN REFERS TO AN AVERAGE OF THE PREVIOUS COLUMNS
@@ -50,9 +53,9 @@ Fz.plane = getSimData(wd, 'plane', 'Fz', alpha, index);
 % In the 'mode' option select to plot either timesteps or simulation time
 
 if plotControls.wing
-    plotConvergence(time,CD.wing,CL.wing,alpha,'wing','timestep')
+    plotConvergence(time,CD.wing,CL.wing,alpha,'wing','timestep',wd,saveFile)
 end
 
 if plotControls.plane
-    plotConvergence(time,CD.plane,CL.plane,alpha,'plane','timestep')
+    plotConvergence(time,CD.plane,CL.plane,alpha,'plane','timestep',wd,saveFile)
 end

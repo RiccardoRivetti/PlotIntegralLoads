@@ -1,4 +1,4 @@
-function plotConvergence(time,CD,CL,alpha,component,mode)
+function plotConvergence(time,CD,CL,alpha,component,mode,wd,saveFile)
 
 nAlpha = length(alpha);
 
@@ -54,3 +54,8 @@ ylabel('$C_{L}$',Interpreter='latex',FontSize=16)
 legend(textLegend, 'Location', 'northeastoutside');
 
 title(['Convergence of the ',component,' $C_{L}$'],Interpreter='latex',FontSize=20)
+
+if saveFile
+    saveas(gcf, sprintf('%s/Graphs/%s_convergence.png', wd, component));
+    fprintf('Saved convergence plot of the %s\n',component);
+end
